@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>My spinner</title>
+</head>
+
+<body>
+    <div>↻</div>
+    <p>Wait a moment....</p>
+
+    <script>
+        const spinner = document.querySelector('div');
+        let rotateCount = 0;
+        let startTime = null;
+        let rAF;
+
+        function draw(timestamp) {
+            if (!startTime) {
+                startTime = timestamp;
+            }
+
+            rotateCount = (timestamp - startTime) / 3;
+            rotateCount %= 360;
+            spinner.style.transform = `rotate(${rotateCount}deg)`;
+
+            rAF = requestAnimationFrame(draw);
+        }
+
+        draw();
+    </script>
+</body>
+
+</html>
