@@ -12,12 +12,18 @@
 <body>
     <div>↻</div>
     <p>Wait a moment....</p>
+    <div class="list-btn">
+        <button onClick="window.location.reload();">Load</button>
+        <button class="btn-cancel">Cancel</button>
+    </div>
 
     <script>
         const spinner = document.querySelector('div');
         let rotateCount = 0;
         let startTime = null;
         let rAF;
+
+        const btnCancel = document.querySelector('.btn-cancel');
 
         function draw(timestamp) {
             if (!startTime) {
@@ -32,6 +38,9 @@
         }
 
         draw();
+
+
+        btnCancel.addEventListener('click', () => { cancelAnimationFrame(rAF); });
     </script>
 </body>
 
